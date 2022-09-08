@@ -1,11 +1,12 @@
-import NotificationButton from "./components/notificationButton"
-
+import Header from "./components/Header"
+import BoardCard from "./objects/BoardCard"
+import SalesCard from "./components/SalesCard"
 
 function App() {
   return (
     <>
-    <h1>Olá Mundo</h1>
-    <NotificationButton/>
+    <Header/>
+    <BoardCard/>
     </>
     
   )   
