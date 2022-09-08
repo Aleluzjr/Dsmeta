@@ -1,26 +1,33 @@
-import './styles.css'
+import './styles.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { registerLocale, setDefaultLocale } from  "react-datepicker";
+import { registerLocale, setDefaultLocale } from "react-datepicker";
 import pt from 'date-fns/locale/pt';
+import { useState } from 'react';
 registerLocale('pt', pt)
 
 
 function DateForm() {
+
+    const min = new Date(new Date().setDate(new Date().getDate() - 365));
+    const max = new Date;
+    const [minDate, setMinDate] = useState(min);
+    const [maxDate, setMaxDate] = useState(max);
+
     return (
         <div>
             <div className="dsmeta-form-control-container" >
                 <DatePicker
-                    selected={new Date()}
-                    onChange={(date: Date) => { }}
+                    selected={minDate}
+                    onChange={(date: Date) => setMinDate(date)}
                     className="dsmeta-form-control"
                     dateFormat="dd/MM/yyyy"
                 />
             </div>
             <div className="dsmeta-form-control-container">
                 <DatePicker
-                    selected={new Date()}
-                    onChange={(date: Date) => { }}
+                    selected={maxDate}
+                    onChange={(date: Date) => setMaxDate(date)}
                     className="dsmeta-form-control"
                     dateFormat="dd/MM/yyyy"
                     locale='pt'
@@ -30,7 +37,4 @@ function DateForm() {
 
     )
 }
-
-
-
-export default DateForm
+export default DateForm;
