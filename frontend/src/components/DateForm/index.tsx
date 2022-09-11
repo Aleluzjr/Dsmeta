@@ -3,7 +3,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { registerLocale, setDefaultLocale } from "react-datepicker";
 import pt from 'date-fns/locale/pt';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 registerLocale('pt', pt)
 
 
@@ -13,6 +14,13 @@ function DateForm() {
     const max = new Date;
     const [minDate, setMinDate] = useState(min);
     const [maxDate, setMaxDate] = useState(max);
+
+    useEffect(()=>{
+        axios.get('http://localhost:8080/sales')
+            .then(reponse => {
+                console.log(reponse.data)
+            })
+    },[]);
 
     return (
         <div>
