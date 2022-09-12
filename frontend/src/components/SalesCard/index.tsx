@@ -7,7 +7,6 @@ import axios from 'axios';
 import { BASE_URL } from '../../utills/request';
 import { Sale } from '../models/sale';
 
-
 function SalesCard() {
 
     const [sales, setSales] = useState<Sale[]>([]);
@@ -17,18 +16,13 @@ function SalesCard() {
     const [maxDate, setMaxDate] = useState(max);
 
     useEffect(() => {
-
         const dmin = minDate.toISOString().slice(0, 10);
         const dmax = maxDate.toISOString().slice(0, 10);
-        
         axios.get(`${BASE_URL}/sales?minDate=${dmin}&maxDate=${dmax}`)
             .then(reponse => {
                 setSales(reponse.data.content)
-
-            
             })
     }, [minDate, maxDate]);
-
     return (
         <>
             <div className="dsmeta-card">
